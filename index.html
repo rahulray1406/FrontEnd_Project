@@ -1,2 +1,86 @@
-      <i class="fas fa-project-diagram    "></i>
-      <h1>Happly</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Renting System</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand mr-auto " href="/landlord-landing"><img src="logof.png" height="41" width="100"></a>
+<!--    <h2 style="color: rgba(247,247,247,0.9);font-size: 29px;font-family: 'Archivo Black', sans-serif;">Renting System</h2>-->
+  <button class="navbar-toggler navbar-toggler-icon d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+          aria-expanded="false" aria-label="Toggle navigation"></button>
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+              <a class="nav-link active lead" href="/landlord-landing">Dashboard</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link lead" href="/landlord-profile">Profile</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link lead" href="/landlord-tenant">Tenants</a>
+          </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link lead" href="/landlord-trans">Transactions</a>-->
+<!--            </li>-->
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle lead" href="#" id="dropdownTransaction" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Transactions</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownTransaction">
+                  <a class="dropdown-item lead my-1" href="/landlord-trans?fetch=paid">Recived Payment</a>
+                  <a class="dropdown-item lead my-1" href="/landlord-trans?fetch=unpaid">Pending payment </a>
+              </div>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle lead" href="#" id="dropdownTransaction" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notifications</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownTransaction">
+                  <a class="dropdown-item lead my-1" href="/landlord-send">Generate Notification </a>
+                  <a class="dropdown-item lead my-1" href="/landlord-notification?type=rec">Recived Notifications</a>
+                  <a class="dropdown-item lead my-1" href="/landlord-notification?type=sent">Sent Notification </a>
+              </div>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link lead" href="/landlord-genBill">Bill Generate</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link lead" href="/landlord-profile">Welcome, {{fname}} {{lname}}&nbsp; &nbsp; &nbsp; ID: {{id}}</a>
+          </li>
+
+          <!--                  <li class="nav-item dropdown">-->
+          <!--                    <a class="nav-link dropdown-toggle lead" href="#" id="dropdownBill" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Generate Bill</a>-->
+          <!--                    <div class="dropdown-menu" aria-labelledby="dropdownBill">-->
+          <!--                        <a class="dropdown-item lead my-1" href="#">Basic rent</a>-->
+          <!--                        <a class="dropdown-item lead my-1" href="#">Water </a>-->
+          <!--                        <a class="dropdown-item lead my-1" href="#">Electricity</a>-->
+          <!--                        <a class="dropdown-item lead my-1" href="#">Maintenence </a>-->
+          <!--                        <a class="dropdown-item lead my-1" href="#">Security </a>-->
+          <!--                    </div>-->
+          <!--                </li>-->
+          <!--                <li class="nav-item">-->
+          <!--                  <a class="nav-link lead" href="#">Contact Us</a>-->
+          <!--              </li>-->
+          <!--              <li class="nav-item">-->
+          <!--                <a class="nav-link lead" href="#">About Us</a>-->
+          <!--            </li>-->
+      </ul>
+       <form class="form-inline my-2 my-lg-0">
+           <a role="button" id="createTenant" href="/landlord-logout" class="btn btn-block nav-link btn-warning bg-dark" style="color: #FFFFFF" >Log Out</a>
+<!--             <button class="btn btn-outline-success my-2 my-sm-0 bg-light &lt;!&ndash;bg-danger &ndash;&gt;"  type="submit">Log Out</button>-->
+       </form>
+  </div>
+
+</nav>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
