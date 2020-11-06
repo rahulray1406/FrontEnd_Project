@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Renting System</title>
+    <title>Renting Management System</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <link rel="stylesheet" href="css/Dash_css.css"> 
     <!-- Bootstrap CSS -->
+    <script src="./Script/new.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
@@ -57,22 +58,531 @@
        </form>
   </div>
 </nav>
-<header class="jumbotron">
-    <div class="container">
-        <div class="row row-header">
-            <div class="col-12 col-sm-6">
-                <h1 style="color:rgb(85, 85, 85);">Rental System</h1>
-                <p style="color:rgb(85, 85, 85);">Get your self a room</p>
-            </div>
-            <div class="col-12 col-sm align-self-center">
-                <img src="images/logof.png" class="img-fluid">
-            </div>
-            <div class="col-12 col-sm align-self-center">
-                <a type="button" class="btn btn-warning btn-sm btn-block" id="reserveButton">Create Tenant</a>
-            </div>
-        </div>
-    </div>
+<header class="jumbotron bg-secondary ">
+    <div class="container-fluid" >
+       <div class="row row-heaer">
+           <div class="col-lg-4 col-sm-12">
+               <h1 class="display-4"><strong>Renting Management System</strong></h1>
+               <p class="lead">We take the Responsibility to Match each tenant with a Landlord!</p>
+           </div>
+           <div class="d-none d-sm-block " >
+               <img src="images/covercrop.png" >
+           </div>
+       </div>
+   </div>
 </header>
+
+<div class="container-fluid shadow" >
+   <div class="row row-content align-items-center ">
+       <div class="col-xl-2 col-lg-4 col-sm-12 order-sm-last col-md-4 ">
+           <div class="shadow" style="margin-top: 5%;background-color: rgba(248,159,159,0.5);width: 100%;height: 100px;border-radius: 14px;"><span></span><i class="fa fa-info-circle" style="font-size: 37px;color: rgb(164,13,13);background-color: rgba(206,111,122,0.66);border-radius: 27px;border-width: 0px;margin: 0px;width: 54px;height: 54px;padding: 8px;margin-top: 24px;margin-left: 16px;padding-left: 11px;padding-top: 9px;"></i>
+               <div class="float-right" style="height: 50%;background-color: rgba(255,255,255,0);width: 60%;"><strong style="font-size: 2rem;">1200</strong>
+                   <p style="font-size: 1.1em;">Total Pending Payments</p></div>
+           </div>
+           <div class="shadow" style="margin-top: 15%;background-color: rgba(241,135,237,0.55);width: 100%;height: 109px;border-radius: 14px;"><span></span><i class="fa fa-rupee" style="font-size: 37px;color: rgb(207,14,118);background-color: rgba(224,119,236,0.66);border-radius: 27px;border-width: 0px;margin: 0px;width: 54px;height: 54px;padding: 8px;margin-top: 24px;margin-left: 16px;padding-left: 19px;padding-top: 9px;"></i>
+               <div class="float-right" style="height: 100%;background-color: rgba(255,255,255,0);width: 60%;"><strong style="font-size: 2rem;">200000</strong>
+                   <p style="font-size: 1.1rem;">Total Revenue Generated</p>
+               </div>
+           </div>
+       </div>
+
+           <div class="col-xl-3 col-lg-8 col-sm-12 order-sm-last col-md-8 ">
+               <div class="chart-container">
+                   <canvas id="myChart" height="350" width="400" style="display: block; height: 100%; width: 100%;"></canvas>
+               </div>
+           <script>
+           var ctx = document.getElementById('myChart').getContext('2d');
+           var myChart = new Chart(ctx, {
+               type: 'doughnut',
+               data: {
+                   labels: ['BaseRent', 'Water', 'Electricity', 'Security', 'Maintenance'],
+                   datasets: [{
+                       data: [{baseRent}, {water}, {electricity}, {security}, {maintenance}],
+                       backgroundColor: [
+                           '#EA4335',
+                           '#3c7ef1',
+                           '#FBBC05',
+                           '#34A853',
+                           'rgb(130,65,217)'
+                       ],
+                       borderColor: [
+                           'rgba(255, 99, 132, 1)',
+                           'rgb(54,162,235)',
+                           'rgba(255, 206, 86, 1)',
+                           'rgba(75, 192, 192, 1)',
+                           'rgba(153, 102, 255, 1)',
+                       ],
+                       borderWidth: 1
+                   }]
+               },
+               options: {
+                   maintainAspectRatio:true,
+                   responsive:false,
+                   legend:{
+                       display:true,
+                       position:'left',
+                       labels:{
+                           fontSize:15,
+                       },
+                   },
+                   title:{
+                       display:true,
+                       text:"Metric wise revenue",
+                       fontSize:20
+                   },
+               }
+           });
+       </script>
+       </div>
+       <div class="col-xl-5 col-lg-8 col-sm-12 order-sm-last col-md-8">
+           <div class="chart-container" >
+               <canvas id="myChart2" height="250" width="400" style="display: block; height: 100%; width: 100%;"></canvas>
+           </div>
+           <script>
+           var ctx = document.getElementById('myChart2').getContext('2d');
+           var myChart = new Chart(ctx, {
+               type: 'line',
+               data: {
+                   labels: [
+                       
+                   ],
+                   datasets: [{
+                       label: 'Month Revenue',
+                       data:  [
+                           
+                       ],
+                       backgroundColor:"rgba(17,138,178,0.55)",
+                       pointBackgroundColor:"#ee6c4d",
+                       borderColor:"rgba(14,109,177,0.95)"
+                   }]
+               },
+               options: {
+                   responsive:true,
+                   maintainAspectRatio:true,
+                   legend:{
+                       display:true,
+                       position:'bottom',
+                       labels:{
+                           fontSize:25,
+                       },
+                   },
+                   title:{
+                       display:true,
+                       text:"Month wise revenue",
+                       fontSize:20
+                   },
+                   scales: {
+                       yAxes: [{
+                           ticks: {
+                               callback: function(value, index, values) {
+                                   return '₹' + value;
+                               }
+                           }
+                       }]
+                   },
+
+               }
+           });
+       </script>
+       </div>
+
+
+       <div class="col-xl-2 col-lg-4 col-sm-12 order-sm-last col-md-4 ">
+           <div class="shadow" style="margin-top: 5%;background-color: rgba(163,194,173,0.5);width: 100%;height: 109px;border-radius: 14px;"><span></span><i class="fa fa-arrow-circle-o-down" style="font-size: 37px;color: rgb(34,119,37);background-color: rgba(118,206,111,0.66);border-radius: 27px;border-width: 0px;margin: 0px;width: 54px;height: 54px;padding: 8px;margin-top: 24px;margin-left: 16px;padding-left: 11px;padding-top: 9px;"></i>
+               <div class="float-right" style="height: 100%;background-color: rgba(255,255,255,0);width: 60%;"><strong style="font-size: 31px;">10100</strong>
+                   <p style="font-size: 1.1em;">Total Recieved Payments</p>
+               </div>
+           </div>
+           <div class="shadow" style="margin-top: 15%;background-color: rgba(245,143,207,0.5);width: 100%;height: 109px;border-radius: 14px;"><span></span><i class="fa fa-users" style="font-size: 2rem;color: rgb(137,4,92);background-color: rgba(223,149,185,0.66);border-radius: 27px;border-width: 0px;margin: 0px;width: 54px;height: 54px;padding: 8px;margin-top: 24px;margin-left: 16px;"></i>
+               <div class="float-right" style="height: 100%;background-color: rgba(255,255,255,0);width: 60%;font-size: 1rem;"><strong style="font-size: 2rem;">1406</strong>
+                   <p style="font-size: 1.1em;">Total Verified Tenants</p>
+               </div>
+       </div>
+       </div>
+</div>
+</div>
+
+<div class="container-fluid shadow" >
+   <div class="row row-content align-items-center ">
+       <div class="col-xl-3 col-lg-4 col-sm-12 order-sm-last col-md-4 ">
+           <div class="shadow" style="height: 54vh;background-color: #ffffff;width: 90%;border-radius: 7px;padding-left: 13px;padding-right: 2px;padding-top: 6px;;margin-top: 5%">
+               <p class="d-inline" style="margin-left: 0px;width: 172px;">Recieved Payments</p><span class="float-right" id="recCount" style="margin-right: 12px;">10%</span>
+               <div class="progress border rounded" style="height: 7px;margin-top: -1px;width: 94%;color: rgba(255,255,255,0);background-color: rgba(255,255,255,0);font-size: 12px;border-style: none;">
+                   <div class="progress-bar bg-success progress-bar-animated" aria-valuenow="{{rec}}" aria-valuemin="0" aria-valuemax="100"  id="recBar" style="width: 5%;transition-duration: 5s;"></div>
+               </div>
+               <div class="table-responsive table-borderless" style="height: 86%;background-color: rgba(244,244,244,0);width: 100%;padding-right: 12px;">
+                   <table class="table table-bordered table-hover" id="recievedTable">
+                       <tbody>
+                     
+                       <tr style="height: 12px;font-size: 16px;">
+                           <td style="padding: 0px;height: 18px;width: 20%;">TID 19</td>
+                           
+                           <td style="padding: 0px;height: 17px;width: 40%;">Ray</td>
+                           <td style="padding: 0px;height: 17px;"><i class="fa fa-rupee" style="color: rgb(25,119,187);border-color: rgb(13,67,171);margin-left: 0px;"></i> 1200  <i class="fa fa-check-square-o float-right" data-target="#transmodel" data-toggle="modal" onclick='getTransInfo(this)' style="color: rgb(43,116,31);margin-top: 5px;; cursor: pointer;"></i></td>
+                       </tr>
+                           <tr style="height: 12px;font-size: 16px;">
+                               <td colspan="3" text-align="center">No recieved Transactions</td>
+                           </tr>  
+                       </tbody>
+                   </table>
+               </div>
+               <small class="form-text text-muted"  style="margin-top: -65px;"><i id="infoRecMonth">Showing Recieved transactions of month: April</i><br>
+                   <div class="dropdup">
+                   <button class="btn-xs btn-dark dropdown-toggle" type="button" id="recTrig" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" border-radius: 2rem;">Month</button>
+                   <div class="dropdown-menu" aria-labelledby="recTrig">
+                       <a class="dropdown-item" onclick="updateDropRec(0)">Jan</a>
+                       <a class="dropdown-item" onclick="updateDropRec(1)">Feb</a>
+                       <a class="dropdown-item" onclick="updateDropRec(2)">Mar</a>
+                       <a class="dropdown-item" onclick="updateDropRec(3)">Apr</a>
+                       <a class="dropdown-item" onclick="updateDropRec(4)">May</a>
+                       <a class="dropdown-item" onclick="updateDropRec(5)">Jun</a>
+                       <a class="dropdown-item" onclick="updateDropRec(6)">Jul</a>
+                       <a class="dropdown-item" onclick="updateDropRec(7)">Aug</a>
+                       <a class="dropdown-item" onclick="updateDropRec(8)">Sept</a>
+                       <a class="dropdown-item" onclick="updateDropRec(9)">Oct</a>
+                       <a class="dropdown-item" onclick="updateDropRec(10)">Nov</a>
+                       <a class="dropdown-item" onclick="updateDropRec(11)">Dec</a>
+                   </div>
+               </div>
+               </small></div>
+       </div>
+       <div class="col-xl-3 col-lg-4 col-sm-12 order-sm-last col-md-4 ">
+           <div class="shadow" style="height: 54vh;background-color: #ffffff;width: 90%;border-radius: 7px;padding-left: 13px;padding-right: 2px;padding-top: 6px;margin-top: 5%">
+               <p class="d-inline" style="margin-left: 0px;width: 172px;font-size: 18px;">Pending Payments</p><span class="float-right" id="penCount" style="margin-right: 12px;">10%</span>
+               <div class="progress border rounded" style="height: 7px;margin-top: -1px;width: 94%;color: rgba(255,255,255,0);background-color: rgba(255,255,255,0);font-size: 12px;border-style: none;">
+                   <div class="progress-bar bg-danger progress-bar-animated" aria-valuenow="{{pen}}" id="pendBar" aria-valuemin="0" aria-valuemax="100" style="width: 10%;transition-duration: 5s;"><span class="sr-only"></span></div>
+               </div>
+               <div class="table-responsive table-borderless" style="height: 86%;background-color: rgba(244,244,244,0);width: 100%;padding-right: 11px;font-size: 21px;">
+                   <table class="table table-bordered table-hover" id="pendingTable">
+                       <tbody>
+                       
+                       <tr style="height: 12px;font-size: 16px;">
+                           <td style="padding: 0px;height: 12px;width: 24%;">TID </td>
+                           
+                           <td style="padding: 0px;height: 12px;width: 40%;">Rahul</td>
+                           
+                           <td style="padding: 0px;height: 12px;"><i class="fa fa-rupee" style="color: rgb(25,119,187);border-color: rgb(13,67,171);margin-left: 0px;"></i> 1000 <i class="fa fa-question-circle float-right" data-target="#transmodel" data-toggle="modal" onclick='getTransInfo(this)' style="color: rgb(208,37,37);padding-top: 2px;margin-top: 2px; cursor: pointer;"></i></td>
+                       </tr>
+                       
+                           <tr style="height: 12px;font-size: 16px;">
+                               <td colspan="3" text-align="center">No pending Transactions</td>
+                           </tr>
+                       
+                       </tbody>
+                   </table>
+               </div>
+               <small class="form-text text-muted"  style="margin-top: -65px;"> <i id="infoPenMonth">Showing Pending transactions of month: april</i><br> <div class="dropdown">
+                   <button class="btn-xs btn-dark dropdown-toggle" type="button" id="pendTrig" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" border-radius: 2rem;">Month</button>
+                   <span></span>
+                   <div class="dropdown-menu" aria-labelledby="pendTrig">
+                       <a class="dropdown-item" onclick="updateDropPen(0)" >Jan</a>
+                       <a class="dropdown-item" onclick="updateDropPen(1)" >Feb</a>
+                       <a class="dropdown-item" onclick="updateDropPen(2)" >Mar</a>
+                       <a class="dropdown-item" onclick="updateDropPen(3)"  >Apr</a>
+                       <a class="dropdown-item" onclick="updateDropPen(4)" >May</a>
+                       <a class="dropdown-item" onclick="updateDropPen(5)" >Jun</a>
+                       <a class="dropdown-item" onclick="updateDropPen(6)" >Jul</a>
+                       <a class="dropdown-item" onclick="updateDropPen(7)" >Aug</a>
+                       <a class="dropdown-item" onclick="updateDropPen(8)" >Sept</a>
+                       <a class="dropdown-item" onclick="updateDropPen(9)" >Oct</a>
+                       <a class="dropdown-item" onclick="updateDropPen(10)" >Nov</a>
+                       <a class="dropdown-item" onclick="updateDropPen(11)" >Dec</a>
+                   </div>
+               </div> </small></div>
+       </div>
+
+       <div class="col-xl-4 col-lg-8 col-sm-12 order-sm-last col-md-8">
+           <div class="chart-container" >
+               <canvas id="myChart3" height="300" width="400" style="display: block; height: 100%; width: 100%;"></canvas>
+           </div>
+           <script>
+               var ctx = document.getElementById('myChart3').getContext('2d');
+               var myChart = new Chart(ctx, {
+                   type: 'line',
+                   data: {
+                       labels: [
+                        //    {{#forEach monthunits}}
+                        //        "{{this.month}}",
+                        //    {{/forEach}}
+                       ],
+                       datasets: [{
+                           label: 'Month Electricity Unit',
+                           data:  [
+                            //    {{#forEach monthunits}}
+                            //        "{{this.elec}}",
+                            //    {{/forEach}}
+                           ],
+                           backgroundColor:"rgba(231,88,117,0.55)",
+                           pointBackgroundColor:"#52db09",
+                           borderColor:"rgba(165,11,11,0.97)"
+                       }]
+                   },
+                   options: {
+                       responsive:true,
+                       maintainAspectRatio:true,
+                       legend:{
+                           display:true,
+                           position:'bottom',
+                           labels:{
+                               fontSize:15,
+                           },
+                       },
+                       title:{
+                           display:true,
+                           text:"Tenants Electricity Unit Consumption",
+                           fontSize:20
+                       },
+                       scales: {
+                           yAxes: [{
+                               ticks: {
+                                   callback: function(value, index, values) {
+                                       return  value+' kwh';
+                                   }
+                               }
+                           }]
+                       },
+
+                   }
+               });
+           </script>
+       </div>
+
+       <div class="col-xl-2 col-lg-4 col-sm-12 order-sm-last col-md-4 ">
+       <div class="shadow" style="background-color: rgba(154,170,227,0.5);width: 100%;height: 109px;border-radius: 14px;"><span></span><i class="fa fa-flash" style="font-size: 37px;color: rgb(7,4,137);background-color: rgba(155,149,223,0.66);border-radius: 27px;border-width: 0px;margin: 0px;width: 54px;height: 54px;padding: 1px;margin-top: 24px;margin-left: 16px;padding-bottom: 0px;padding-left: 19px;padding-top: 10px;"></i>
+           <div class="float-right" style="height: 100%;background-color: rgba(255,255,255,0);width: 60%;"><strong style="font-size: 31px;">122</strong>
+               <p>Total Electricity Unit consumed</p>
+           </div>
+       </div>
+       <div class="shadow" style="background-color: rgba(205,166,138,0.5);width: 100%;height: 109px;border-radius: 14px;margin-top: 10%"><span></span><i class="fa fa-openid" style="font-size: 37px;color: rgb(137,76,4);background-color: rgba(223,153,149,0.66);border-radius: 27px;border-width: 0px;margin: 0px;width: 54px;height: 54px;padding: 1px;margin-top: 27px;margin-left: 16px;padding-bottom: 0px;padding-left: 10px;padding-top: 9px;"></i>
+           <div class="float-right" style="height: 100%;background-color: rgba(255,255,255,0);width: 60%;"><strong style="font-size: 31px;margin-top: 0px;margin-right: 0px;">16</strong>
+               <p>Total Available Rooms</p>
+           </div>
+       </div>
+       </div>
+
+   </div>
+</div>
+
+<div class="container-fluid" style="width: 85%">
+   <div class="row row-content align-items-center">
+       <div class="col-sm-4 col-md-3">
+           <h3 class="display-4">Rent Metric</h3>
+       </div>
+       <div class="col-sm col-md ">
+           <!--  <div class="table-wrapper-scroll-y my-custom-scrollbar"> -->
+           <table class="table table-bordered table-striped mb-0 shadow">
+               <thead class="bg-dark" style="color: floralwhite;">
+               <tr>
+                   <th scope="col">Sl.No</th>
+                   <th scope="col">Metric Name</th>
+                   <th scope="col">Rent (In Rs.)</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr>
+                   <th scope="row">1.</th>
+                   <td class="lead">Base Rent</td>
+                   <td class="lead">Rs 15000</td>
+               </tr>
+               <tr>
+                   <th scope="row">2.</th>
+                   <td class="lead">Water</td>
+                   <td class="lead">Rs 450</td>
+               </tr>
+               <tr>
+                   <th scope="row">3.</th>
+                   <td class="lead">Electricity</td>
+                   <td class="lead">Rs 15 (per Unit)</td>
+               </tr>
+               <tr>
+                   <th scope="row">4.</th>
+                   <td class="lead">Security</td>
+                   <td class="lead">Rs 1500</td>
+               </tr>
+               <tr>
+                   <th scope="row">5.</th>
+                   <td class="lead">Maintainance</td>
+                   <td class="lead">Rs 600</td>
+               </tr>
+               </tbody>
+           </table>
+           <!-- </div> -->
+           <center> <button data-target="#updatemodal" data-toggle="modal" name="SetNew" id="SetNew" class="btn btn-primary bg-dark"  role="button">Set New</button> </center>
+<!--            <button class="btn btn-primary bg-dark" data-target="#updatemodal" data-toggle="modal" type="button" style="width: 33px;height: 34px;padding: 0px;">Update Metrics</button>-->
+       </div>
+   </div>
+   <div role="dialog" tabindex="-1" class="modal fade text-center shadow show" id="updatemodal" style="background-color: rgba(234,0,0,0);">
+       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h4 class="modal-title">Update Details</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+               <div class="modal-body text-left">
+                   <form method="post" action="/landlord-updateMetric">
+                       <fieldset class="d-block" style="border-width: 1px;border-style: solid;padding: 0px;padding-left: 10px;">
+                           <legend style="width: 143px;margin-left: 0px;">Rent Metrics</legend>
+                           <label class="d-inline" style="margin-right: 9px;" for="baserent">Base Rent: </label>
+                           <input type="number" class="border rounded border-info form-control form-control-sm d-inline" id="baserent" name="baserent" value={{baserent}} style="width: 25%;margin-bottom: 2%;" />
+                           <label class="d-inline" style="margin-right: 9px;margin-left: 53px;" for="water">Water: </label>
+                           <input type="number" class="border rounded border-info form-control form-control-sm d-inline" id="water" name="water" value={{water}} style="width: 25%;" />
+                           <label class="d-inline" style="margin-right: 6px;width: 80px;" for="electricity">Electricity:</label>
+                           <input type="number" class="border rounded border-info form-control form-control-sm d-inline" id="electricity" name="electricity" value={{electricity}} style="width: 25%;margin-bottom: 2%;" />
+                           <label style="margin-right: 9px;margin-left: 14px;" for="maint">Maintenence: </label>
+                           <input type="number" class="border rounded border-info form-control form-control-sm d-inline" id="maint" name="maint" value={{maintenance}} style="width: 25%;" />
+                           <label class="d-inline" style="margin-right: 9px;margin-left: 3px;" for="security">Security: </label>
+                           <input type="number" class="border rounded border-info form-control form-control-sm d-inline" id="security" name="security" value={{security}} style="width: 25%;margin-bottom: 2%;" />
+                       </fieldset>
+                       <small class="form-text text-muted">**Do not <strong>change field </strong> which you don&#39;t want to update.</small>
+                       <hr>
+                       <button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button>
+                       <button class="btn btn-info float-right" type="submit">Update</button>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+
+   <div class="container">
+       <div class="row row-content align-items-center">
+           <div class="col-12 col-sm-4 order-sm-last col-md-3">
+               <h3 class="display-4">User Approvals</h3>
+           </div>
+           <div class="col col-sm order-sm-first col-md">
+               <h4><span class="badge badge-dark lead">Pending Approvals </span> <span class="badge badge-dark lead">1</span></h4>
+               <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                   <table class="table table-bordered table-striped mb-0 shadow">
+                       <thead class="bg-dark" style="color: floralwhite;">
+                       <tr>
+                           <th scope="col">Tenant ID</th>
+                           <th scope="col">Tenant Name</th>
+                           <th scope="col">Action</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       
+                           <!-- <tr>
+                               <td colspan="3" >No pending approval</td>
+                           </tr> -->
+                       
+                           <tr>
+                               <th scope="row">17</th>
+                               <td class="lead">Tuba</td>
+                               <td align="center">
+                                   <button type="button" value={{this.tenantID}} onclick="approve(this)" class="btn-primary-Action bg-dark" style="width: auto">Approve</button>
+                                   <button type="button" value={{this.tenantID}} onclick="cancleapprove(this)" class="btn-primary-Action bg-danger" style="width: auto">Discard</button>
+                                   <a href="#" class="btn btn-info" role="button" style="margin:0px;padding:2px 8px;width: auto;color: #FFFFFF;border-radius: 30px">Send Message</a>
+
+                               </td>
+                           </tr>
+                     
+
+                       </tbody>
+                   </table>
+               </div>
+               
+               <div style="text-align: center;"> <a name="ApproveAll" id="ApproveAll" class="btn btn-primary bg-dark" role="button">Approve All</a> <br>
+               </div>
+              
+           </div>
+       </div>
+   </div>
+   <div role="dialog" id="transmodel" tabindex="-1" class="modal fade show" >
+       <div class="modal-dialog" role="document">
+           <div class="modal-content">
+               <div class="modal-header text-info" style="padding: 4px;">
+                   <h4 class="modal-title">Transaction Details</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+               <div class="modal-body text-left" style="padding: 0px;height: 223px;background-color: #ffffff;width: 498px;">
+                   <div class="table-responsive table-borderless d-flex" style="width: 100%;height: 253px;padding: 0px;padding-left: 18px;margin-top: 1px;margin-left: 0px;padding-right: 18px;">
+                       <table class="table table-bordered table-hover">
+                           <thead>
+                           <tr>
+                               <th id="Tid" style="width: 15%;height: 30px;padding: 2px;">Transaction ID :</th>
+                               <th id="Tname" style="width: 20%;padding: 0px;">Tenant Name :</th>
+                           </tr>
+                           </thead>
+                           <tbody style="height: 154px;">
+                           <tr style="height: 27px;">
+                               <td  id="Tyr" style="padding: 0px;padding-right: 0px;height: 24px;">Year : </td>
+                               <td  id="Tmnt" style="padding: 0px;">Month : </td>
+                           </tr>
+                           <tr style="height: 27px;">
+                               <td  id="Tpd" style="padding: 0px;padding-right: 0px;height: 24px;">Paid on : </td>
+                               <td id="Tbr"  style="padding: 0px;">Base Rent : </td>
+                           </tr>
+                           <tr>
+                               <td  id="Tcr" style="padding: 0px;padding-right: 0;">Created on :</td>
+                               <td  id="Twt" style="padding: 0px;height: 27px;">Water : </td>
+                           </tr>
+                           <tr>
+                               <td  id="Tel" style="padding: 0px;height: 27px;">Electricity : </td>
+                               <td  id="Tmn" style="padding: 0px;height: 27px;">Maintenance : </td>
+                           </tr>
+                           <tr>
+                               <td  id="Tini" style="padding: 0px;padding-right: 0px;">Initial Unit : </td>
+                               <td  id="Tfin" style="padding: 0px;height: 27px;">Final Unit : </td>
+                           </tr>
+                           <tr>
+                               <td  id="Tene" style="padding: 0px;padding-right: 0;">Tenant ID : </td>
+                               <td  id="Tsec" style="padding: 0px;height: 27px;">Security : </td>
+                           </tr>
+                           <tr>
+                               <th  id="Tamt" class="table-success text-center" style="padding: 0px;padding-right: 0;background-color: rgb(45,190,200); color: #FFFFFF" colspan="2">Total Amount : </th>
+                           </tr>
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
+               <!--            <div class="modal-footer" style="background-color: #ffffff;padding: 2px;">-->
+               <!--                <button class="btn btn-light " type="button" data-dismiss="modal">Close</button>-->
+               <!--            </div>-->
+           </div>
+       </div>
+
+       <div role="dialog" tabindex="-1" class="modal fade text-center shadow show" id="updatemodal" style="background-color: rgba(200,17,17,0);">
+           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h4 class="modal-title">Update Details</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                   <div class="modal-body text-left">
+                       <form method="post" action="/landlord-updateMetric">
+                           <fieldset class="d-table-row" style="border-width: 1px;border-style: solid;padding: 0px;padding-left: 10px;">
+                               <legend style="width: 143px;margin-left: 0px;">Basic Details</legend>
+                               <label class="d-inline" style="margin-right: 0px;" for="fname">First Name: </label>
+                               <input type="text" class="border rounded border-secondary form-control form-control-sm d-inline" id="fname" name="fname" value={{fname}} style="width: 22%;padding: 3px;margin-bottom: 2%;" autofocus />
+                               <label style="margin-right: -1px;margin-left: 15px;width: 84px;" for="lname">Last Name: </label>
+                               <input type="text" class="border rounded border-info form-control form-control-sm d-inline" id="lname" name="lname" value={{lname}} style="width: 27%;" /><label class="d-inline-flex" style="margin-right: 9px;" for="mobile">Mobile: </label>
+                               <input type="tel" class="border rounded border-info form-control form-control-sm d-inline-flex" id="mobile" name="mobile" value={{data.mobile}} style="width: 23%;" />
+                               <label id="email" style="margin-right: 9px;margin-bottom: 0px;margin-left: 30px;width: 40px;" for="email">Email: </label>
+                               <input type="email" class="border rounded border-info form-control form-control-sm d-inline" id="email" name="email" value={{data.email}} style="width: 42%;" />
+                               <label class="d-inline" id="address" style="margin-right: 9px;margin-bottom: 0px;margin-left: -1px;width: 59px;" for="address">Address: </label>
+                               <!--                        <input type="text" class="border rounded border-secondary form-control form-control-sm d-inline" id="address" name="address" value={{data.address}} style="width: 90%;margin-left: 21px;margin-bottom: 8px;" />-->
+                               <textarea class="form-control form-control-sm" id="address" name="address" rows="3" autocomplete="on" inputmode="verbatim" spellcheck="true" wrap="soft" style="margin-bottom: 9px">{{data.address}}</textarea>
+                           </fieldset>
+                           <fieldset class="d-block" style="border-width: 1px;border-style: solid;padding: 0px;padding-left: 10px;">
+                               <legend style="width: 143px;margin-left: 0px;">Rent Metrics</legend>
+                               <label class="d-inline" style="margin-right: 9px;" for="baserent">Base Rent: </label>
+                               <input type="number" class="border rounded border-info form-control form-control-sm d-inline" id="baserent" name="baserent" value={{data.baseRent}} style="width: 25%;margin-bottom: 2%;" />
+                               <label class="d-inline" style="margin-right: 9px;margin-left: 53px;" for="water">Water: </label>
+                               <input type="number" class="border rounded border-info form-control form-control-sm d-inline" id="water" name="water" value={{data.water}} style="width: 25%;" />
+                               <label class="d-inline" style="margin-right: 6px;width: 80px;" for="electricity">Electricity:</label>
+                               <input type="number" class="border rounded border-info form-control form-control-sm d-inline" id="electricity" name="electricity" value={{data.electricity}} style="width: 25%;margin-bottom: 2%;" />
+                               <label style="margin-right: 9px;margin-left: 14px;" for="maint">Maintenence: </label>
+                               <input type="number" class="border rounded border-info form-control form-control-sm d-inline" id="maint" name="maint" value={{data.maintenance}} style="width: 25%;" />
+                               <label class="d-inline" style="margin-right: 9px;margin-left: 3px;" for="security">Security: </label>
+                               <input type="number" class="border rounded border-info form-control form-control-sm d-inline" id="security" name="security" value={{data.security}} style="width: 25%;margin-bottom: 2%;" />
+                           </fieldset>
+                           <small class="form-text text-muted">**Do not <strong>change field </strong> which you don&#39;t want to update.</small>
+                           <hr>
+                           <button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button>
+                           <button class="btn btn-info float-right" type="submit">Update</button>
+                       </form>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
