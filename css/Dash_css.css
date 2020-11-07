@@ -34,6 +34,14 @@ body {
   cursor: pointer;
   margin-top: 10px;
 }
+.btn-dark{
+  width: 25%;
+  border-radius: 2rem;
+  padding: 1.5%;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
 .btn-primary-Action{
   width: 35%;
   border-radius: 2rem ;
