@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <link rel="stylesheet" href="./css/Dash_css.css"> 
     <!-- Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script src="./Script/new.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -121,7 +122,7 @@
                data: {
                    labels: ['BaseRent', 'Water', 'Electricity', 'Security', 'Maintenance'],
                    datasets: [{
-                       data: [{baseRent}, {water}, {electricity}, {security}, {maintenance}],
+                       data: [81000, 576, 185204, 4005, 63594],
                        backgroundColor: [
                            '#EA4335',
                            '#3c7ef1',
@@ -167,13 +168,23 @@
            var myChart = new Chart(ctx, {
                type: 'line',
                data: {
-                   labels: [
+                   labels: ["January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
                        
                    ],
                    datasets: [{
                        label: 'Month Revenue',
                        data:  [
-                           
+                                "88092",
+                                "59316",
+                                "53430",
+                                "75012",
+                                "23704",
+                                "34825",
                        ],
                        backgroundColor:"rgba(17,138,178,0.55)",
                        pointBackgroundColor:"#ee6c4d",
@@ -324,17 +335,23 @@
                var myChart = new Chart(ctx, {
                    type: 'line',
                    data: {
-                       labels: [
-                        //    {{#forEach monthunits}}
-                        //        "{{this.month}}",
-                        //    {{/forEach}}
+                       labels: ["January",
+                                "February",
+                                "March",
+                                "April",
+                                "May",
+                                "June",
+                          
                        ],
                        datasets: [{
                            label: 'Month Electricity Unit',
                            data:  [
-                            //    {{#forEach monthunits}}
-                            //        "{{this.elec}}",
-                            //    {{/forEach}}
+                                    "95",
+                                    "51",
+                                    "42",
+                                    "75",
+                                    "53",
+                                    "89",
                            ],
                            backgroundColor:"rgba(231,88,117,0.55)",
                            pointBackgroundColor:"#52db09",
@@ -393,7 +410,6 @@
            <h3 class="display-4">Rent Metric</h3>
        </div>
        <div class="col-sm col-md ">
-           <!--  <div class="table-wrapper-scroll-y my-custom-scrollbar"> -->
            <table class="table table-bordered table-striped mb-0 shadow">
                <thead class="bg-dark" style="color: floralwhite;">
                <tr>
@@ -430,9 +446,7 @@
                </tr>
                </tbody>
            </table>
-           <!-- </div> -->
            <center> <button data-target="#updatemodal" data-toggle="modal" name="SetNew" id="SetNew" class="btn btn-primary bg-dark"  role="button">Set New</button> </center>
-<!--            <button class="btn btn-primary bg-dark" data-target="#updatemodal" data-toggle="modal" type="button" style="width: 33px;height: 34px;padding: 0px;">Update Metrics</button>-->
        </div>
    </div>
    <div role="dialog" tabindex="-1" class="modal fade text-center shadow show" id="updatemodal" style="background-color: rgba(234,0,0,0);">
@@ -484,17 +498,14 @@
                        </thead>
                        <tbody>
                        
-                           <!-- <tr>
-                               <td colspan="3" >No pending approval</td>
-                           </tr> -->
+                           
                        
                            <tr>
                                <th scope="row">17</th>
                                <td class="lead">Tuba</td>
                                <td align="center">
-                                   <button type="button" value={{this.tenantID}} onclick="approve(this)" class="btn-primary-Action bg-dark" style="width: auto">Approve</button>
-                                   <button type="button" value={{this.tenantID}} onclick="cancleapprove(this)" class="btn-primary-Action bg-danger" style="width: auto">Discard</button>
-                                   <a href="#" class="btn btn-info" role="button" style="margin:0px;padding:2px 8px;width: auto;color: #FFFFFF;border-radius: 30px">Send Message</a>
+                                   <button type="button"  onclick="approve(this)" class="btn-primary-Action bg-dark" style="width: auto">Approve</button>
+                                   <button type="button"  onclick="cancleapprove(this)" class="btn-primary-Action bg-danger" style="width: auto">Discard</button>
 
                                </td>
                            </tr>
@@ -520,45 +531,43 @@
                        <table class="table table-bordered table-hover">
                            <thead>
                            <tr>
-                               <th id="Tid" style="width: 15%;height: 30px;padding: 2px;">Transaction ID :</th>
-                               <th id="Tname" style="width: 20%;padding: 0px;">Tenant Name :</th>
+                               <th id="Tid" style="width: 15%;height: 30px;padding: 2px;">Transaction ID :100011446</th>
+                               <th id="Tname" style="width: 20%;padding: 0px;">Tenant Name : Rahul</th>
                            </tr>
                            </thead>
                            <tbody style="height: 154px;">
                            <tr style="height: 27px;">
-                               <td  id="Tyr" style="padding: 0px;padding-right: 0px;height: 24px;">Year : </td>
-                               <td  id="Tmnt" style="padding: 0px;">Month : </td>
+                               <td  id="Tyr" style="padding: 0px;padding-right: 0px;height: 24px;">Year : 2020</td>
+                               <td  id="Tmnt" style="padding: 0px;">Month : Nov</td>
                            </tr>
                            <tr style="height: 27px;">
-                               <td  id="Tpd" style="padding: 0px;padding-right: 0px;height: 24px;">Paid on : </td>
-                               <td id="Tbr"  style="padding: 0px;">Base Rent : </td>
+                               <td  id="Tpd" style="padding: 0px;padding-right: 0px;height: 24px;">Paid on : 14-May-2020</td>
+                               <td id="Tbr"  style="padding: 0px;">Base Rent : 2500</td>
                            </tr>
                            <tr>
-                               <td  id="Tcr" style="padding: 0px;padding-right: 0;">Created on :</td>
-                               <td  id="Twt" style="padding: 0px;height: 27px;">Water : </td>
+                               <td  id="Tcr" style="padding: 0px;padding-right: 0;">Created on :16-jan</td>
+                               <td  id="Twt" style="padding: 0px;height: 27px;">Water : 600</td>
                            </tr>
                            <tr>
-                               <td  id="Tel" style="padding: 0px;height: 27px;">Electricity : </td>
-                               <td  id="Tmn" style="padding: 0px;height: 27px;">Maintenance : </td>
+                               <td  id="Tel" style="padding: 0px;height: 27px;">Electricity : 1500</td>
+                               <td  id="Tmn" style="padding: 0px;height: 27px;">Maintenance :700 </td>
                            </tr>
                            <tr>
-                               <td  id="Tini" style="padding: 0px;padding-right: 0px;">Initial Unit : </td>
-                               <td  id="Tfin" style="padding: 0px;height: 27px;">Final Unit : </td>
+                               <td  id="Tini" style="padding: 0px;padding-right: 0px;">Initial Unit : 50</td>
+                               <td  id="Tfin" style="padding: 0px;height: 27px;">Final Unit :150 </td>
                            </tr>
                            <tr>
-                               <td  id="Tene" style="padding: 0px;padding-right: 0;">Tenant ID : </td>
-                               <td  id="Tsec" style="padding: 0px;height: 27px;">Security : </td>
+                               <td  id="Tene" style="padding: 0px;padding-right: 0;">Tenant ID :17 </td>
+                               <td  id="Tsec" style="padding: 0px;height: 27px;">Security :1500 </td>
                            </tr>
                            <tr>
-                               <th  id="Tamt" class="table-success text-center" style="padding: 0px;padding-right: 0;background-color: rgb(45,190,200); color: #FFFFFF" colspan="2">Total Amount : </th>
+                               <th  id="Tamt" class="table-success text-center" style="padding: 0px;padding-right: 0;background-color: rgb(45,190,200); color: #FFFFFF" colspan="2">Total Amount : 6500</th>
                            </tr>
                            </tbody>
                        </table>
                    </div>
                </div>
-               <!--            <div class="modal-footer" style="background-color: #ffffff;padding: 2px;">-->
-               <!--                <button class="btn btn-light " type="button" data-dismiss="modal">Close</button>-->
-               <!--            </div>-->
+             
            </div>
        </div>
 
@@ -579,7 +588,6 @@
                                <label id="email" style="margin-right: 9px;margin-bottom: 0px;margin-left: 30px;width: 40px;" for="email">Email: </label>
                                <input type="email" class="border rounded border-info form-control form-control-sm d-inline" id="email" name="email" value={{data.email}} style="width: 42%;" />
                                <label class="d-inline" id="address" style="margin-right: 9px;margin-bottom: 0px;margin-left: -1px;width: 59px;" for="address">Address: </label>
-                               <!--                        <input type="text" class="border rounded border-secondary form-control form-control-sm d-inline" id="address" name="address" value={{data.address}} style="width: 90%;margin-left: 21px;margin-bottom: 8px;" />-->
                                <textarea class="form-control form-control-sm" id="address" name="address" rows="3" autocomplete="on" inputmode="verbatim" spellcheck="true" wrap="soft" style="margin-bottom: 9px">{{data.address}}</textarea>
                            </fieldset>
                            <fieldset class="d-block" style="border-width: 1px;border-style: solid;padding: 0px;padding-left: 10px;">
